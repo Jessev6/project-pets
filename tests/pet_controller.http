@@ -1,0 +1,60 @@
+# Execute following requests in order to fully test the api
+POST http://localhost:8080/api/pets HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Tarzan",
+  "animal": "Dog",
+  "birthday": "2011-08-07",
+  "color": "black"
+}
+
+###
+POST http://localhost:8080/api/pets HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Jules",
+  "animal": "Cat",
+  "birthday": "2020-03-12",
+  "color": "black"
+}
+
+###
+POST http://localhost:8080/api/pets HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Toulouse",
+  "animal": "Cat",
+  "birthday": "2020-03-27",
+  "color": "grey striped"
+}
+
+###
+
+GET http://localhost:8080/api/pets HTTP/1.1
+
+###
+
+# Store the id of the first pet retrieved
+
+@id = REPLACE_THIS
+
+GET http://localhost:8080/api/pets/{{id}} HTTP/1.1
+
+###
+
+PUT http://localhost:8080/api/pets/{{id}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Tarzan",
+  "animal": "Dog",
+  "birthday": "2011-08-18",
+  "color": "black"
+}
+
+###
+
+DELETE http://localhost:8080/api/pets/{{id}} HTTP/1.1

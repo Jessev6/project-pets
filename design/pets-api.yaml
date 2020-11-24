@@ -1,0 +1,148 @@
+openapi: "3.0.0"
+info:
+  title: "Pets API"
+  description: "API for pets."
+  contact:
+    name: "Jesse Verbruggen"
+  version: "1.0.0"
+servers:
+  - url: "{protocol}://{host}:{port}"
+    description: "Endpoint for pet API"
+    variables:
+      protocol:
+        enum:
+          - "http"
+          - "https"
+        default: "http"
+      host:
+        default: "localhost"
+      port:
+        default: "8080"
+components:
+  schemas:
+    Pet:
+      description: "Schema for pet."
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        birthday:
+          type: "string"
+        animal:
+          type: "string"
+        color:
+          type: "string"
+        id:
+          type: "string"
+          example: "dxzvnyuhapwef"
+      required:
+        - "name"
+        - "birthday"
+        - "animal"
+        - "color"
+        - "id"
+  responses:
+    201:
+      description: "Created"
+    202:
+      description: "Accepted"
+    204:
+      description: "No Content"
+    400:
+      description: "Bad Request"
+    401:
+      description: "Unauthorized"
+    404:
+      description: "Resource not found"
+    500:
+      description: "Internal Server Error"
+paths:
+  /pets:
+    get:
+      summary: Get list of pets
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
+              example:
+                - name: Dobby
+                  birthday: "2002-03-10"
+                  animal: dog
+                  color: white
+                  id: f234f-fk422-324fa
+                - name: Tarzan
+                  birthday: "2011-08-20"
+                  animal: dog
+                  color: black
+                  id: oej32-jen4l-38nz9
+                - name: Figaro
+                  birthday: "2001-02-13"
+                  animal: cat
+                  color: brown
+                  id: oe93j-nau4n-fu39s
+        401:
+          $ref: "#/components/responses/401"
+        500:
+          $ref: "#/components/responses/500"
+    post:
+      summary: Create new pet
+      responses:
+        201:
+          $ref: "#/components/responses/201"
+        400:
+          $ref: "#/components/responses/400"
+        401:
+          $ref: "#/components/responses/401"
+        500:
+          $ref: "#/components/responses/500"
+  /pets/:id:
+    get:
+      summary: Get Pet by "id"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+              example:
+                name: Dobby
+                birthday: "2002-03-10"
+                animal: dog
+                color: white
+                id: f234f-fk422-324fa
+        401:
+          $ref: "#/components/responses/401"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+    put:
+      summary: Update a pet
+      responses:
+        202:
+          $ref: "#/components/responses/202"
+        400:
+          $ref: "#/components/responses/400"
+        401:
+          $ref: "#/components/responses/401"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"
+    delete:
+      summary: Delete a pet
+      responses:
+        204:
+          $ref: "#/components/responses/204"
+        401:
+          $ref: "#/components/responses/401"
+        404:
+          $ref: "#/components/responses/404"
+        500:
+          $ref: "#/components/responses/500"

@@ -1,4 +1,4 @@
-from app.models.pet import Pet
+from app.domain.models.pet import Pet
 
 from uuid import uuid4
 

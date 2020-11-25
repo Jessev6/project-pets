@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Response
 
 from app.domain.models.pet import Pet
+from app.infrastructure.mock.pet_repository import PetRepository
 
 router = APIRouter()
 

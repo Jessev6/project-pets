@@ -1,0 +1,16 @@
+{
+  "version": "v2.3.0-RC1",
+  "summary": {
+    "title": "Project pets Threat Model",
+    "owner": "Jesse Verbruggen",
+    "description": "",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Jesse Verbruggen",
+    "threatTop": 0
+  }
+}
